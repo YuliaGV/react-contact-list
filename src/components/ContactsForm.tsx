@@ -40,23 +40,82 @@ function ContactsForm() {
     <div>
         <h1>Add a contact</h1>
 
-        <section className='border'>
+        <section className='mt-2 bg-mist-50 rounded-md'>
 
         <Formik initialValues={initialValues} validationSchema={validationSchema} onSubmit={onSubmit}>
             {({ isSubmitting }) => (
                 <Form>
-                <label htmlFor="name">Name</label>
-                <Field type="text" id="name" name="name" />
-                <ErrorMessage name="name" />
 
-                <label htmlFor="email">Email</label>
-                <Field type="email" id="email" name="email" />
-                <ErrorMessage name="email" />
 
-               
-                <button type="submit" disabled={isSubmitting}>
-                    Submit
-                </button>
+                <div className='px-4 py-2 '>
+
+                  <div className="mt-2">
+                    <label 
+                      htmlFor="name" 
+                      className='block text-sm font-semibold text-gray-800'
+                    >
+                      Name
+                    </label>
+                    <Field 
+                      type="text" 
+                      className="block w-full px-4 py-2 mt-2 text-black bg-white border rounded-md focus:border-cyan-400 focus:ring-cyan-300 focus:outline-none focus:ring focus:ring-opacity-40"
+                      id="name" 
+                      name="name" 
+                    />
+                    <ErrorMessage name="name" className='text-red'/>
+                  </div>
+
+
+                  <div className="mt-2">
+                    <label 
+                      htmlFor="email" 
+                      className='block text-sm font-semibold text-gray-800'
+                    >Email
+                    </label>
+                    <Field 
+                      type="email" 
+                      className="block w-full px-4 py-2 mt-2 text-black bg-white border rounded-md focus:border-cyan-400 focus:ring-cyan-300 focus:outline-none focus:ring focus:ring-opacity-40"
+                      id="email" 
+                      name="email" 
+                    />
+                    <ErrorMessage name="email"  className='text-red'/>
+                  </div>
+
+                  <div className="mt-2">
+                    <label 
+                      htmlFor="category" 
+                      className='block text-sm font-semibold text-gray-800'
+                      >
+                      Category
+                    </label>
+                    <Field 
+                      as="select" 
+                      name="category"
+                      className="block w-full px-4 py-2 mt-2 text-black bg-white border rounded-md focus:border-cyan-400 focus:ring-cyan-300 focus:outline-none focus:ring focus:ring-opacity-40"
+                    >
+                      <option value="work">Work</option>
+                      <option value="family">Family</option>
+                      <option value="friends">Friends</option>
+                      <option value="others">Others</option>
+                    </Field>
+                  </div>
+
+                
+                  <div className="mt-2">
+                    <button 
+                      type="submit" 
+                      className="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded"
+                      disabled={isSubmitting}
+
+                      >
+                        Submit
+                    </button>
+                  </div>
+
+
+                </div>
+
+
                 </Form>
             )}
         </Formik>
