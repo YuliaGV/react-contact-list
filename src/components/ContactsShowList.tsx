@@ -3,7 +3,7 @@
 function ContactsShowList() {
   return (
     <div>
-        <h1>My contacts</h1>
+        <h1 className='text-black text-lg font-bold'>My contacts</h1>
 
         
 

@@ -16,7 +16,7 @@ function App() {
       <div>
         <img src={Logo} alt="logo"/>
       </div>
-      <div className='grid grid-cols-1 md:grid-cols-2 '>
+      <div className='grid grid-cols-1 md:grid-cols-2 mt-2'>
          <div>
             <ContactsForm />
          </div> 

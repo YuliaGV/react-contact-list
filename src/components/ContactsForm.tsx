@@ -38,9 +38,9 @@ function ContactsForm() {
   return (
 
     <div>
-        <h1>Add a contact</h1>
+        <h1 className='text-black text-lg font-bold'>Add a contact</h1>
 
-        <section className='mt-2 bg-mist-50 rounded-md'>
+        <section className='mt-2 border rounded-md'>
 
         <Formik initialValues={initialValues} validationSchema={validationSchema} onSubmit={onSubmit}>
             {({ isSubmitting }) => (
@@ -58,11 +58,30 @@ function ContactsForm() {
                     </label>
                     <Field 
                       type="text" 
-                      className="block w-full px-4 py-2 mt-2 text-black bg-white border rounded-md focus:border-cyan-400 focus:ring-cyan-300 focus:outline-none focus:ring focus:ring-opacity-40"
+                      className="block w-full px-4 py-2 mt-2 text-black bg-white border rounded-md focus:border-mountains-50 focus:ring-mountains-50 focus:outline-none focus:ring focus:ring-opacity-40"
                       id="name" 
                       name="name" 
                     />
-                    <ErrorMessage name="name" className='text-red'/>
+                    <div className='text-red-600 font-bold'>
+                      <ErrorMessage name="name"/>
+                    </div>
+                  </div>
+
+
+                  <div className="mt-2">
+                    <label 
+                      htmlFor="phoneNumber" 
+                      className='block text-sm font-semibold text-gray-800'
+                    >
+                      Phone number
+                    </label>
+                    <Field 
+                      type="text" 
+                      className="block w-full px-4 py-2 mt-2 text-black bg-white border rounded-md focus:border-mountains-50 focus:ring-mountains-50 focus:outline-none focus:ring focus:ring-opacity-40"
+                      id="phoneNumber" 
+                      name="phoneNumber" 
+                    />
+                  
                   </div>
 
 
@@ -74,11 +93,13 @@ function ContactsForm() {
                     </label>
                     <Field 
                       type="email" 
-                      className="block w-full px-4 py-2 mt-2 text-black bg-white border rounded-md focus:border-cyan-400 focus:ring-cyan-300 focus:outline-none focus:ring focus:ring-opacity-40"
+                      className="block w-full px-4 py-2 mt-2 text-black bg-white border rounded-md focus:border-mountains-50 focus:ring-mountains-50 focus:outline-none focus:ring focus:ring-opacity-40"
                       id="email" 
                       name="email" 
                     />
-                    <ErrorMessage name="email"  className='text-red'/>
+                    <div className='text-red-600 font-bold'>
+                      <ErrorMessage name="email"/>
+                    </div>
                   </div>
 
                   <div className="mt-2">
@@ -91,7 +112,7 @@ function ContactsForm() {
                     <Field 
                       as="select" 
                       name="category"
-                      className="block w-full px-4 py-2 mt-2 text-black bg-white border rounded-md focus:border-cyan-400 focus:ring-cyan-300 focus:outline-none focus:ring focus:ring-opacity-40"
+                      className="block w-full px-4 py-2 mt-2 text-black bg-white border rounded-md focus:border-mountains-50 focus:ring-mountains-50 focus:outline-none focus:ring focus:ring-opacity-40"
                     >
                       <option value="work">Work</option>
                       <option value="family">Family</option>
@@ -104,7 +125,7 @@ function ContactsForm() {
                   <div className="mt-2">
                     <button 
                       type="submit" 
-                      className="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded"
+                      className="bg-sunglow-50 hover:bg-sunglow-50 text-white font-bold py-2 px-4 rounded border-2 border-sunglow-50"
                       disabled={isSubmitting}
 
                       >
