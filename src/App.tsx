@@ -1,9 +1,9 @@
 import './App.css'
 import { useSelector } from 'react-redux'
 import type { ContactsState } from './features/contacts/contactsSlice';
-import ContactsShowList from './components/ContactsShowList';
-import ContactsForm from './components/ContactsForm';
 import Logo from './assets/Logo.png'
+import Sidebar from './components/Sidebar';
+import Home from './pages/Home';
 
 function App() {
 
@@ -11,19 +11,16 @@ function App() {
   console.log(contacts)
   
   return (
-    <div>
-
-      <div>
-        <img src={Logo} alt="logo"/>
-      </div>
-      <div className='grid grid-cols-1 md:grid-cols-2 mt-2'>
-         <div>
-            <ContactsForm />
-         </div> 
-         <div>
-            <ContactsShowList/>
+    <div >
+      <div className='flex gap-1'>
+        <div>
+          <img src={Logo} alt="logo"/>
+        </div>
+        <div>
+          <Sidebar/>
         </div>
       </div>
+      <Home />
     
     </div>
     

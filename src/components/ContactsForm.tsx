@@ -40,7 +40,7 @@ function ContactsForm() {
     <div>
         <h1 className='text-black text-lg font-bold'>Add a contact</h1>
 
-        <section className='mt-2 border rounded-md'>
+        <section className='mt-2 rounded-md bg-mist-50'>
 
         <Formik initialValues={initialValues} validationSchema={validationSchema} onSubmit={onSubmit}>
             {({ isSubmitting }) => (
@@ -58,11 +58,11 @@ function ContactsForm() {
                     </label>
                     <Field 
                       type="text" 
-                      className="block w-full px-4 py-2 mt-2 text-black bg-white border rounded-md focus:border-mountains-50 focus:ring-mountains-50 focus:outline-none focus:ring focus:ring-opacity-40"
+                      className="block w-full px-4 py-2 mt-2 text-black bg-white border  rounded-md focus:border-mountains-50 focus:ring-mountains-50 focus:outline-none focus:ring focus:ring-opacity-40"
                       id="name" 
                       name="name" 
                     />
-                    <div className='text-red-600 font-bold'>
+                    <div className='text-red-600 font-bold text-left'>
                       <ErrorMessage name="name"/>
                     </div>
                   </div>
@@ -97,7 +97,7 @@ function ContactsForm() {
                       id="email" 
                       name="email" 
                     />
-                    <div className='text-red-600 font-bold'>
+                    <div className='text-red-600 font-bold text-left'>
                       <ErrorMessage name="email"/>
                     </div>
                   </div>
@@ -122,7 +122,7 @@ function ContactsForm() {
                   </div>
 
                 
-                  <div className="mt-2">
+                  <div className="mt-4">
                     <button 
                       type="submit" 
                       className="bg-sunglow-50 hover:bg-sunglow-50 text-white font-bold py-2 px-4 rounded border-2 border-sunglow-50"
