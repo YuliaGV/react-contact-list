@@ -4,11 +4,44 @@ import type { ContactsState } from './features/contacts/contactsSlice';
 import Logo from './assets/Logo.png'
 import Sidebar from './components/Sidebar';
 import Home from './pages/Home';
+import Favorites from './pages/Favorites';
+import Error from './pages/Error';
+
+import {
+  createBrowserRouter,
+  RouterProvider,
+} from "react-router-dom";
+import Categories from './pages/Categories';
+import AllContacts from './components/AllContacts';
+
 
 function App() {
 
   const contacts = useSelector((state: ContactsState) => state.contactList);
-  console.log(contacts)
+ 
+  const router = createBrowserRouter([
+    {
+      path: "/home",
+      element: <Home />,
+    },
+    {
+      path: "/all",
+      element: <AllContacts />,
+    },
+    {
+      path: "/favorites",
+      element: <Favorites />,
+    },
+    {
+      path: "/categories",
+      element: <Categories/>,
+    },
+    {
+      path: "/",
+      element: <Home />,
+      errorElement: <Error />,
+    },
+  ]);
   
   return (
     <div >
@@ -19,8 +52,10 @@ function App() {
         <div>
           <Sidebar/>
         </div>
+        
       </div>
-      <Home />
+      <RouterProvider router={router} />
+     
     
     </div>
     

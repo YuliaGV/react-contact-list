@@ -5,6 +5,6 @@ export interface ContactInterface {
     phoneNumber: string;
     email: string;
     note: string;
-    isFavorite: string;
+    isFavorite: boolean;
 
 }
