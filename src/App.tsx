@@ -12,7 +12,7 @@ import {
   RouterProvider,
 } from "react-router-dom";
 import Categories from './pages/Categories';
-import AllContacts from './components/AllContacts';
+import AllContacts from './pages/AllContacts';
 
 
 function App() {

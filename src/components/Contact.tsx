@@ -1,10 +1,12 @@
+import { useState } from "react";
+
 import { ContactInterface } from "../Contact"
 
 import { useDispatch } from 'react-redux'
-import { changeFavorite } from '../features/contacts/contactsSlice';
+import { changeFavorite, remove } from '../features/contacts/contactsSlice';
 
 import { HiHeart, HiOutlineHeart,HiOutlinePencilAlt, HiOutlineTrash } from "react-icons/hi";
-
+import EditContact from "./EditContact";
 
 
 
@@ -14,11 +16,24 @@ interface ContactProps {
 }
 
 const Contact: React.FC<ContactProps> = ({ contact }) => {
+
+
+    const [modalOpen, setModalOpen] = useState(false);
+
+    const openModal = () => {
+        setModalOpen(true);
+    };
+
+    const closeModal = () => {
+        setModalOpen(false);
+    };
+
+
   
     const dispatch = useDispatch()
 
-    const onSubmit = (values: ContactInterface) => {
-    console.log(values);
+    const deleteContact= (values: ContactInterface) => {
+        dispatch(remove(values));
     };
 
 
@@ -28,6 +43,7 @@ const Contact: React.FC<ContactProps> = ({ contact }) => {
 
 
   return (
+    <>
     <div className="w-full p-4 shadow-md lg:max-w-lg">
         <div className="space-y-2">
             <div className="flex justify-between">
@@ -45,10 +61,10 @@ const Contact: React.FC<ContactProps> = ({ contact }) => {
                 </div>
                 <div className="flex justify-center">
                     <div>
-                        <button className="text-xl hover:text-blue-600"  onClick={() => onSubmit(contact)}><HiOutlinePencilAlt/></button>
+                        <button className="text-xl hover:text-blue-600"  onClick={() => openModal()}><HiOutlinePencilAlt/></button>
                     </div>
                     <div>
-                        <button className="text-xl hover:text-red-600"  onClick={() => onSubmit(contact)}><HiOutlineTrash/></button>
+                        <button className="text-xl hover:text-red-600"  onClick={() => deleteContact(contact)}><HiOutlineTrash/></button>
                     </div>
                 </div>
             </div>
@@ -62,6 +78,8 @@ const Contact: React.FC<ContactProps> = ({ contact }) => {
             </ul>
         </div>
     </div>
+    <EditContact isOpen={modalOpen} onClose={closeModal} contact={contact} />
+    </>
   )
 }
 

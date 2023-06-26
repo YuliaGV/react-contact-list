@@ -7,6 +7,7 @@ export interface ContactsState {
 }
 
 const storedContacts = localStorage.getItem('contacts');
+
 const initialState: ContactsState = {
   contactList: storedContacts ? JSON.parse(storedContacts) : [
     {
@@ -24,6 +25,7 @@ const initialState: ContactsState = {
 export const contactsSlice = createSlice({
   name: 'contact',
   initialState,
+
   reducers: {
       add: (state, action: PayloadAction<ContactInterface>) => {
         state.contactList.push(action.payload)
@@ -38,10 +40,35 @@ export const contactsSlice = createSlice({
           foundContact.isFavorite = !foundContact.isFavorite;
           localStorage.setItem('contacts', JSON.stringify(state.contactList));
         }
-      }
+      },
+
+      update: (state, action: PayloadAction<ContactInterface>) => {
+
+      /*const updatedContact = action.payload;
+      const contactIndex = state.contactList.findIndex((contact) => contact.id === updatedContact.id);
+      if (contactIndex !== -1) {
+        state.contactList[contactIndex] = updatedContact;
+        localStorage.setItem('contacts', JSON.stringify(state.contactList));
+      }*/
+      
+      const updatedContact = action.payload;
+      const updatedList = state.contactList.map(contact =>
+        contact.id === updatedContact.id ? updatedContact : contact
+      );
+      state.contactList = updatedList;
+      state.contactList.sort((a, b) => a.name.localeCompare(b.name)); 
+      localStorage.setItem('contacts', JSON.stringify(updatedList));
+      
+    },
+    remove: (state, action: PayloadAction<ContactInterface>) => {
+      state.contactList = state.contactList.filter(contact => contact.id !== action.payload.id);
+      localStorage.setItem('contacts', JSON.stringify(state.contactList));
+
+    },
+      
   },
 })
 
 
-export const { add, changeFavorite } = contactsSlice.actions
+export const { add, changeFavorite, update, remove} = contactsSlice.actions
 export default contactsSlice.reducer
